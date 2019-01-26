@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 
+# 双向链表：有头结点，所有操作头结点不占下标，头结点下一个节点是0节点
+
 class Node:
     def __init__(self, val):
         self.left = None
@@ -12,7 +14,7 @@ class Link:
         head_node = Node(-1)
         self.head = head_node
 
-    def add_node(self, value):
+    def add_node(self, value):    # 链表后加入新节点
         tmp_point = self.head
         while True:
             if not tmp_point.right:
@@ -23,7 +25,7 @@ class Link:
             else:
                 tmp_point = tmp_point.right
 
-    def insert_node(self, index, value):
+    def insert_node(self, index, value):    # 按下标插入新节点
         tmp_point = self.head
         for i in range(index):
             tmp_point = tmp_point.right
@@ -35,7 +37,7 @@ class Link:
         new_node.left = tmp_point
         temp.left = new_node
 
-    def delete_node(self, index):
+    def delete_node(self, index):    # 按下标删除节点
         tmp_point = self.head
         for i in range(index):
             tmp_point = tmp_point.right
@@ -44,7 +46,7 @@ class Link:
         temp_node.right.left = tmp_point
         del(temp_node)
 
-    def search_node(self, value):
+    def search_node(self, value):    # 按值查找下标
         tmp_point = self.head
         index = -1
         while True:
@@ -56,13 +58,13 @@ class Link:
             else:
                 return "no find index"
 
-    def change_value(self, index, value):
+    def change_value(self, index, value):    # 按下标改值
         tmp_point = self.head
         for i in range(index+1):
             tmp_point = tmp_point.right
         tmp_point.value = value
 
-    def print_link(self):
+    def print_link(self):    # 正向遍历
         tmp_point = self.head
         while True:
             if tmp_point.right:
@@ -72,7 +74,7 @@ class Link:
                 print(tmp_point.value)
                 break
 
-    def invert_print(self):
+    def invert_print(self):    # 反向遍历
         tmp_point = self.head
         while True:
             tmp_point = tmp_point.right
